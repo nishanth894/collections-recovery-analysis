@@ -1,0 +1,7 @@
+,step,step_name,delta_inr,running_inr,rows_affected
+0,1,"Raw payments, all statuses, incl. duplicates",1917258617.15,1917258617.15,25500
+1,2,less: duplicate payment_id rows,-38366344.26,1878892272.89,500
+2,3,less: FAILED / PENDING / REVERSED (not settled),-563308308.25,1315583964.64,7466
+3,4,less: outside observation window,0.0,1315583964.64,0
+4,5,less: payments on current (dpd=0) accounts - not recovery,-117461931.08,1198122033.5600002,1587
+5,6,= Golden net recovery (is_recovery=1),0.0,1198122033.56,15947

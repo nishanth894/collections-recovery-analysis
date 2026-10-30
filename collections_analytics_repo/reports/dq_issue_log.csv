@@ -1,0 +1,28 @@
+issue_id,area,issue,rows_affected,base_rows,treatment
+DQ-01,payments,Duplicate payment_id rows (ingestion retries),500,25500,Keep 1 row per payment_id; prefer row with payment_reference
+DQ-02,payments,"Rows sharing a payment_reference with a DIFFERENT payment (reference collision, NOT duplicate)",7218,25000,Kept; flagged ref_collision_flag
+DQ-03,payments,Missing payment_reference,368,25000,Kept; flagged
+DQ-04,payments,Non-settled payments (FAILED/PENDING/REVERSED) that a raw sum would count,7466,25000,Excluded from recovery
+DQ-05,payments,SUCCESS payments on current (dpd=0) accounts,1587,17534,"Excluded from recovery (regular EMI, not recovery)"
+DQ-06,payments,Payment amount exceeds account outstanding (overpayment),1703,15947,Kept; flagged (not capped)
+DQ-07,calls,Duplicate call_id rows,1350,91350,Dedup; earliest ts kept; non-null agent merged
+DQ-08,calls,Calls with missing agent_id (after merge),1759,90000,agent_key=UNKNOWN; excluded from agent-level analysis only
+DQ-09,calls,Calls outside observation window (late/future/early),52,90000,"Kept, flagged, excluded from monthly metrics"
+DQ-10,calls,Non-ANSWERED calls with duration>0 (status/duration conflict),72035,90000,Status trusted; duration not used for contact definition
+DQ-11,calls,Calls whose calendar MONTH changes when source timezone is honoured (vs. ignoring it),305,90000,Converted via row timezone to UTC then IST
+DQ-12,calls,Calls on telephony vendors flagged INACTIVE in vendor master,54089,90000,"Kept; vendor master status is a current snapshot, not as-of"
+DQ-13,calls,Calls dated outside the lifetime of their campaign,72584,90000,Campaign attribution on calls is unreliable; analysed by campaign_id only as a hypothesis
+DQ-14,borrowers,Superseded / duplicate borrower versions,19585,30600,Latest chronologically-valid version kept
+DQ-15,borrowers,Kept borrower versions with updated_at < created_at,2465,11015,Flagged; geography low reliability
+DQ-16,accounts,Accounts whose borrower_id is NULL or absent from borrowers,2913,30000,state=UNKNOWN
+DQ-17,agents,"Agent snapshot rows superseded (1,000 agent_ids in 30,000 rows)",29000,30000,Latest snapshot for attributes; earliest joined_at for tenure
+DQ-18,agents,Agents with >1 employee_code across snapshots,1000,1000,agent_id retained as canonical key; employee_code unusable as crosswalk
+DQ-19,whatsapp_events,Duplicate event ids,600,60600,Dedup
+DQ-20,dispositions,Rows using the alias code PROMISE_TO_PAY (same outcome as PTP),3926,35000,Mapped to canonical PTP
+DQ-21,field_visits,scheduled_at missing,250,25000,Flagged
+DQ-22,attempts,vendor_id missing,2400,120000,vendor=UNKNOWN
+DQ-23,status_history,recorded_at earlier than event_at (back-dated / clock skew),30191,60000,Event time used for as-of status
+DQ-24,ptp,OPEN promises already past promised_date at data cut-off (stale),4128,18000,Reported separately; excluded from resolved kept-rate
+DQ-25,joins,Attempts whose account_id equals the parent call account_id (call_id FK validity),8,120000,call_id link NOT trusted; tables analysed independently via account_id
+DQ-26,joins,Dispositions whose account_id equals the parent call account_id,0,35000,call_id link NOT trusted
+DQ-27,joins,Calls whose borrower_id equals accounts.borrower_id,8,91350,borrower_id on events NOT trusted; account_id used

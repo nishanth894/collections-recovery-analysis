@@ -1,0 +1,16 @@
+digraph G { rankdir=LR; fontname="Helvetica"; node [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled", fillcolor="#eef2f8", color="#3b5b88"]; edge [color="#667085"];
+ subgraph cluster_src { label="Source systems"; style=dashed; color="#aaaabb"; dialer[label="Dialer / telephony\n(calls, attempts, dispositions)"]; msg[label="WhatsApp / SMS\nproviders"]; field[label="Field app"]; lms[label="LMS: accounts,\nborrowers, status history"]; pay[label="Payment gateway"]; crm[label="Agent HRMS / sessions"]; }
+ raw[label="RAW\nimmutable files + SHA-256\nappend-only, partition by load_date", fillcolor="#fdecea"];
+ stg[label="STAGING\ntyped, trimmed IDs\ntz -> UTC/IST, row lineage"];
+ cln[label="CLEAN\ndedup + supersession\nREJECTS table (reason codes)"];
+ gold[label="GOLDEN\ndim_* / fact_*\nPK/FK enforced, account_id spine", fillcolor="#e6f4ea"];
+ feat[label="FEATURE\naccount x month panel\nattribution, as-of status"];
+ met[label="METRICS\nversioned definitions\nmetrics_monthly (+ per-day)"];
+ dash[label="DASHBOARD\none-screen exec view\n+ drill-down", fillcolor="#fff4e0"];
+ dq[label="DATA-QUALITY GATES\ncontracts, row conservation,\nrecon of ₹, freshness", shape=hexagon, fillcolor="#ffffff"];
+ mon[label="MONITORING\nanomaly detection on per-day\nmetrics, DQ trend, alerts", shape=hexagon, fillcolor="#ffffff"];
+ exp[label="EXPERIMENT SERVICE\nrandomised holdouts\n(targeting pilots)", fillcolor="#fff4e0"];
+ dialer->raw; msg->raw; field->raw; lms->raw; pay->raw; crm->raw;
+ raw->stg->cln->gold->feat->met->dash;
+ dq->cln [style=dashed, label="block on fail"]; dq->gold [style=dashed]; dq->met [style=dashed];
+ met->mon; exp->feat [label="treatment flag"]; gold->exp; }

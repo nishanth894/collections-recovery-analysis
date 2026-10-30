@@ -1,0 +1,4 @@
+assumption,Feb→Mar total %,Feb→Mar per-day %,payments changing month vs baseline
+baseline: timestamps are IST,10.469896037427318,-0.22073906296886658,0
+timestamps are UTC (shift +5:30 to IST),10.700847120810097,-0.012138084429591522,126
+timestamps are in account timezone,10.913657263052734,0.18007752791857623,57

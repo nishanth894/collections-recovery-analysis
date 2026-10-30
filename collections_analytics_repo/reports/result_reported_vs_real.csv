@@ -1,0 +1,4 @@
+,labelled_PAID_pct_with_payment_7d,other_pct_with_payment_7d,n_PAID,chi2_p
+Call disposition PAID vs other,1.7024620220010476,1.7510101981912642,3818.0,0.880183917949876
+Field-visit outcome PAID vs other,1.6176470588235297,1.6252390057361379,4080.0,1.0
+PTP status KEPT vs BROKEN (payment within promised window+3d),5.0,4.1232227488151665,4180.0,0.06096527191407985

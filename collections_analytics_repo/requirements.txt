@@ -1,0 +1,7 @@
+pandas>=2.2
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.8
+reportlab>=4.0
+pypdf>=4.0
+# system: graphviz (dot) for docs/architecture.dot -> png/svg ; Python 3.10+ ; SQLite >= 3.35 (bundled)

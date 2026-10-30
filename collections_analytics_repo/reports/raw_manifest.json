@@ -1,0 +1,70 @@
+{
+  "accounts.csv": {
+    "sha256": "7b20ca4f1d9f7e845b3acb5272df92785f85c127038a06c7c0d7156b1098745c",
+    "rows": 30000
+  },
+  "account_status_history.csv": {
+    "sha256": "e3d966013537b507c0a7a4dab995ee6f385dbb289585e10c9e535e9cf2456d55",
+    "rows": 60000
+  },
+  "agent_sessions.csv": {
+    "sha256": "dbdd5e176cc196ba24b62b803c648657b43fe530fdfcb4699f72b2c2c257296a",
+    "rows": 15000
+  },
+  "agents.csv": {
+    "sha256": "c479a49e1612662ad7f65d896c6396bc3548392392e8c2b8898752c10f5cb2e4",
+    "rows": 30000
+  },
+  "borrowers.csv": {
+    "sha256": "9a9398a23caab6950ab402f4939849d9c5ebace753f6112f3eec987a0b2f7c6b",
+    "rows": 30600
+  },
+  "call_attempts.csv": {
+    "sha256": "47a7cef6c478e0e44b569732bb98a77ac5033d7f95b0eb422ddcf5319c3e9624",
+    "rows": 120000
+  },
+  "call_dispositions.csv": {
+    "sha256": "ce1aa618a0694402abac82e7f48497d63404bc7d037578fc251cd3569df8ddc1",
+    "rows": 35000
+  },
+  "calls.csv": {
+    "sha256": "9fdaa69308c21a20a97c152e291a06297831046a888acf91811b99b080ccf295",
+    "rows": 91350
+  },
+  "campaigns.csv": {
+    "sha256": "bd2b4f627e550ffd10682dee8de66054708465958b493bce3838d3a24feeb181",
+    "rows": 120
+  },
+  "complaints.csv": {
+    "sha256": "780ab03a9955a5cba7fc3a57758576e820b67926d88f816643ec00e7d3e79c62",
+    "rows": 8000
+  },
+  "daily_targeting.csv": {
+    "sha256": "0b85d799d951c112dad38725f0c685e35dfd2cb3fc2f414b17979814ce591074",
+    "rows": 45000
+  },
+  "field_visits.csv": {
+    "sha256": "626fe8f886164922d82517a54cdcc37f01a2231f77349e7fdc8ed2f582cb8ba8",
+    "rows": 25000
+  },
+  "payments.csv": {
+    "sha256": "5639c2d5b88a8aee2267dd27127c28d9e82e163c56940e9e3dafd02040fbb9e8",
+    "rows": 25500
+  },
+  "promises_to_pay.csv": {
+    "sha256": "454702ee76d0d5ff991ed8a128fd11606332ff9adaa27fcdf3bc75480b8da5ff",
+    "rows": 18000
+  },
+  "sms_events.csv": {
+    "sha256": "364492ba295aede3d977ab98001af18b5c86a442184620c6f8d9f88dbd02f974",
+    "rows": 45000
+  },
+  "vendor_telephony.csv": {
+    "sha256": "268ca539fea135cbf577077d9eda7e361cf8e16d098e5f432e5d610ef88feada",
+    "rows": 15
+  },
+  "whatsapp_events.csv": {
+    "sha256": "ba1e9a1a44ac41c6da64d01376be625289a94cfb67197f0ff5f0b185d2e4cfc8",
+    "rows": 60600
+  }
+}
